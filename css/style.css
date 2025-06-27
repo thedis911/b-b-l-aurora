@@ -1,0 +1,44 @@
+
+body {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+}
+header nav {
+  background: #006699;
+  padding: 10px;
+  position: sticky;
+  top: 0;
+}
+nav ul {
+  display: flex;
+  list-style: none;
+  justify-content: center;
+  gap: 15px;
+}
+nav a, nav button {
+  color: white;
+  text-decoration: none;
+  background: none;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+}
+section {
+  padding: 40px;
+}
+footer {
+  text-align: center;
+  background: #f1f1f1;
+  padding: 20px;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 400px;
+}
+form input, form textarea, form button {
+  padding: 10px;
+  font-size: 1rem;
+}

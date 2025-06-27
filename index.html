@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>B&B Casa Blu</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="js/lang.js" defer></script>
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="#home">🏠 Home</a></li>
+        <li><a href="#camere">🛏️ Camere</a></li>
+        <li><a href="#attrazioni">🗺️ Attrazioni</a></li>
+        <li><a href="#prenotazioni">📅 Prenotazioni</a></li>
+        <li><a href="#contatti">📞 Contatti</a></li>
+        <li><button onclick="toggleLang()">🇮🇹 / 🇬🇧</button></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section id="home">
+    <h1 data-it="Benvenuti al B&B Casa Blu" data-en="Welcome to B&B Casa Blu">Benvenuti al B&B Casa Blu</h1>
+    <p data-it="Un angolo di relax immerso nella natura." data-en="A relaxing spot surrounded by nature.">Un angolo di relax immerso nella natura.</p>
+  </section>
+
+  <section id="camere">
+    <h2 data-it="Le nostre camere" data-en="Our Rooms">Le nostre camere</h2>
+    <p data-it="Camere spaziose e confortevoli per ogni esigenza." data-en="Spacious, comfortable rooms for every need.">Camere spaziose e confortevoli per ogni esigenza.</p>
+  </section>
+
+  <section id="attrazioni">
+    <h2 data-it="Attrazioni Vicine" data-en="Nearby Attractions">Attrazioni Vicine</h2>
+    <ul>
+      <li data-it="Lago di Garda" data-en="Lake Garda">Lago di Garda</li>
+      <li data-it="Parco Naturale" data-en="Nature Park">Parco Naturale</li>
+      <li data-it="Musei locali" data-en="Local Museums">Musei locali</li>
+    </ul>
+  </section>
+
+  <section id="prenotazioni">
+    <h2 data-it="Prenota Ora" data-en="Book Now">Prenota Ora</h2>
+    <p><a href="https://airbnb.com" target="_blank">Airbnb</a> | <a href="https://booking.com" target="_blank">Booking.com</a></p>
+  </section>
+
+  <section id="contatti">
+    <h2 data-it="Contattaci" data-en="Contact Us">Contattaci</h2>
+    <form action="https://formspree.io/f/your-form-id" method="POST">
+      <input type="text" name="name" placeholder="Nome / Name" required>
+      <input type="email" name="email" placeholder="Email" required>
+      <textarea name="message" placeholder="Messaggio / Message" required></textarea>
+      <button type="submit" data-it="Invia" data-en="Send">Invia</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 B&B Casa Blu</p>
+  </footer>
+</body>
+</html>
