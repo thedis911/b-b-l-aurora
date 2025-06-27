@@ -96,7 +96,7 @@
   <footer>
     <p>&copy; 2025 B&B L'Aurora</p>
   </footer>
- <script>
+<script>
   const translations = {
     it: {
       home: "Home",
@@ -119,7 +119,11 @@
       const key = el.getAttribute("data-i18n");
       el.textContent = translations[lang][key];
     });
+    document.querySelectorAll("[data-it], [data-en]").forEach(el => {
+      const translation = el.getAttribute(`data-${lang}`);
+      if (translation) el.textContent = translation;
+    });
   }
-</script> 
+</script>
 </body>
 </html>
