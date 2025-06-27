@@ -1,28 +1,61 @@
-
 body {
   font-family: sans-serif;
   margin: 0;
   padding: 0;
 }
 header nav {
-  background: #006699;
-  padding: 10px;
+  background-color: #004080;
+  padding: 20px 0;
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
   position: sticky;
   top: 0;
+  z-index: 999;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
-nav ul {
-  display: flex;
+
+header nav ul {
   list-style: none;
-  justify-content: center;
-  gap: 15px;
+  margin: 0;
+  padding: 0;
+  display: inline-flex;
+  gap: 18px;
+  flex-wrap: wrap;
+  align-items: center;
 }
-nav a, nav button {
+
+header nav ul li {
+  display: inline;
+  font-size: 1.2rem;
   color: white;
+}
+
+header nav ul li a {
   text-decoration: none;
+  color: white;
+  font-weight: 600;
+  padding: 0 5px;
+  transition: color 0.3s ease;
+}
+
+header nav ul li a:hover {
+  color: #ffd700;
+}
+
+header nav ul li button {
   background: none;
   border: none;
-  font-size: 1rem;
+  color: white;
+  font-size: 1.2rem;
   cursor: pointer;
+}
+
+header nav ul li:nth-child(odd) {
+  padding: 0 10px;
+}
+
+header nav ul li:nth-child(even) {
+  color: #ffffff88; /* separatori | traslucidi */
 }
 section {
   padding: 40px;
@@ -42,3 +75,4 @@ form input, form textarea, form button {
   padding: 10px;
   font-size: 1rem;
 }
+
