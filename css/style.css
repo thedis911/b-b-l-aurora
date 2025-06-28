@@ -81,9 +81,9 @@ header nav ul li:nth-child(even) {
   flex-wrap: wrap; /* per responsività su mobile */
   background-color: transparent; /* niente sfondo */
   gap: 200px;
-  margin: 40px auto;
   margin-top: 20px;
   max-width: 1200px;
+  margin-left: 20px; 
 }
 
 /* Stile base delle due sezioni */
@@ -103,6 +103,7 @@ h1, h2, h3,h4,h5,h6
 {
   font-weight: 600; /* grassetto */
   color: white;
+  margin-left: 20px;   
 }
 
 /* Testo normale */
