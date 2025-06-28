@@ -78,7 +78,7 @@ header nav ul li:nth-child(even) {
 
 /* Blocchi titoli (grassetto) */
 
-h1, h2, h3, h4, h5, h6 /* sezioni dei titoli */
+h1 /* sezioni dei titoli */
 {
   font-weight: 600; /* grassetto */
   color: white; /* testo in bianco */
