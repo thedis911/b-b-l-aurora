@@ -167,4 +167,24 @@ form input, form textarea, form button
   margin-bottom: 10px;
 }  
 
+/* icona facebook */
+
+.facebook-icon 
+{
+  display: inline-block;
+  background-color: white;
+  padding: 6px 8px;
+  border-radius: 6px;
+  margin-left: 10px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+  text-decoration: none;
+}
+
+.facebook-icon i 
+{
+  color: #1877f2;
+  font-size: 1.2em;
+}
+
+
 
