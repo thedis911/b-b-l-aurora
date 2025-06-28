@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="it">
 
-<!-- Font e nome tab Google -->  
+  <!-- Font e nome tab Google -->  
   
 <head>
   <meta charset="UTF-8" />
@@ -79,13 +79,27 @@
   </section>
 
 <!-- Sezione "foto" --> 
-  
+
+<!-- commentato in seguito a slideshow delle immaigini  
   <div class="gallery">
     <img src="images/room1.jpg" alt="Camera accogliente">
     <img src="images/room2.jpg" alt="Sala colazione">
     <img src="images/room3.jpg" alt="Vista panoramica">
     <img src="images/room4.jpg" alt="Giardino esterno">
   </div>
+ --> 
+<div class="slideshow-container">
+  <p class="slideshow-title" data-it="Camere" data-en="Rooms">Camere</p>
+  <div class="slideshow-images">
+    <img src="images/room1.jpg" alt="Camera 1" class="active">
+    <img src="images/room2.jpg" alt="Camera 2">
+    <img src="images/room3.jpg" alt="Camera 3">
+    <img src="images/room4.jpg" alt="Camera 4">
+  </div>
+  <button class="prev">&#10094;</button>
+  <button class="next">&#10095;</button>
+</div>
+  
   </section>
 
 <!-- Sezione "servizi" -->
@@ -95,15 +109,15 @@
       data-it="Servizi" 
       data-en="Services"
   >Servizi
-  </h1>
-    
+  </h1>  
     <p 
        data-it="Ecco un elenco dei nostri servizi"
        data-en="Here's what we offer!"
     >Ecco un elenco dei nostri servizi
     </p>
   </section>
-  
+
+<!-- commentato in seguito a slideshow delle immaigini  
   <div class="gallery">
     <img src="images/breakfast1.jpg" alt="Colazione">
     <img src="images/breakfast1.jpg" alt="Colazione 2">
@@ -112,6 +126,21 @@
     <img src="images/climatizzatore2.jpg" alt="Climatizzatore 2"> 
     <img src="images/connessionewifi.jpg" alt="Linea internet">  
   </div>
+-->
+  
+<div class="slideshow-container">
+  <p class="slideshow-title" data-it="Servizi" data-en="Services">Servizi</p>
+  <div class="slideshow-images">
+    <img src="images/breakfast1.jpg" alt="Colazione" class="active">
+    <img src="images/breakfast3.jpg" alt="Sala colazioni">
+    <img src="images/climatizzatore1.jpg" alt="Climatizzatore 1">
+    <img src="images/climatizzatore2.jpg" alt="Climatizzatore 2">
+    <img src="images/connessionewifi.jpg" alt="WiFi">
+  </div>
+  <button class="prev">&#10094;</button>
+  <button class="next">&#10095;</button>
+</div>
+  
   </section>
 
 <!-- Sezione "prenotazioni" -->  
@@ -136,7 +165,34 @@
     </h2>
     <ul>
 
-<!-- Foto Sezione "Nelle vicinanze" -->        
+<!-- Foto Sezione "Nelle vicinanze" -->
+
+<!-- per Porto Torres inserisco galleria di immagini, per altre città no -->
+
+<div class="slideshow-container" 
+  data-title="Porto Torres">
+  <div class="slideshow-title" 
+       data-it="Porto Torres" 
+       data-en="Porto Torres"
+  >Porto Torres
+  </div>
+
+  <div class="slideshow-images">
+    <img src="immagini/balai1.jpg" alt="Balai" class="active">
+    <img src="immagini/balai2.jpg" alt="Balai"">
+    <img src="immagini/ponte porto torres.png" alt="Ponte">
+    <img src="immagini/scoglio lungo dall'alto.jpg" alt="Scogliolungo">
+    <img src="immagini/spiaggia scogliolungo.webp" alt="Scogliolungo">
+    <img src="immagini/san gavino.jpg" alt="Chiesa San Gavino">
+    <img src="immagini/san gavino 2.jpg" alt="Chiesa San Gavino">
+    <img src="immagini/chiesa balai lontani.jpeg" alt="Chiesetta Balai Lontano">
+    <img src="immagini/antiquarium1.jpg" alt="Antiquarium Turritano">
+    <img src="immagini/antiquarium2.webp" alt="Antiquarium Turritano">
+  </div>
+
+  <button class="prev">&#10094;</button>
+  <button class="next">&#10095;</button>
+</div>
       
 <div style="max-width: 600px; margin: 0;">
   <p 
@@ -146,8 +202,8 @@
   </p>
   
   <img src="immagini/lapelosa.jpeg" alt="Stintino - Spiaggia la Pelosa" style="width: 100%; height: auto; border-radius: 10px; margin-top: 10px;">
-</div>   
-
+</div>  
+      
 <div style="max-width: 600px; margin: 0;">
   <p 
       data-it="Parco Nazionale dell'Asinara"
@@ -228,5 +284,49 @@
     });
   }
 </script>
+
+<script>
+  document.querySelectorAll(".slideshow-container").forEach(container => {
+    const images = container.querySelectorAll("img");
+    const prevBtn = container.querySelector(".prev");
+    const nextBtn = container.querySelector(".next");
+    let index = 0;
+
+    const showImage = i => {
+      images.forEach(img => img.classList.remove("active"));
+      images[i].classList.add("active");
+    };
+
+    const nextImage = () => {
+      index = (index + 1) % images.length;
+      showImage(index);
+    };
+
+    const prevImage = () => {
+      index = (index - 1 + images.length) % images.length;
+      showImage(index);
+    };
+
+    prevBtn.addEventListener("click", () => {
+      prevImage();
+      resetAutoSlide();
+    });
+
+    nextBtn.addEventListener("click", () => {
+      nextImage();
+      resetAutoSlide();
+    });
+
+    let autoSlide = setInterval(nextImage, 4000);
+
+    const resetAutoSlide = () => {
+      clearInterval(autoSlide);
+      autoSlide = setInterval(nextImage, 4000);
+    };
+
+    showImage(index);
+  });
+</script>  
+  
 </body>
 </html>
