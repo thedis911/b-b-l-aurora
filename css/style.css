@@ -173,10 +173,10 @@ form input, form textarea, form button
 {
   display: inline-block;
   background-color: white;
-  padding: 6px 6px;
+  padding: 6px 8px; /* 6px da alto/basso e 8px dai lati rispetto al contenitore */
   border-radius: 6px;
   margin-left: 10px;
-  margin-top: 3px
+  margin-bottom: 3px
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
   text-decoration: none;
 }
