@@ -119,8 +119,7 @@ form input, form textarea, form button
 {
   position: relative;  
   max-width: 600px; /* limita la larghezza del box che contiene le foto massima a 600 pixel.  */
-  /*padding-left: 20px;   /* distanza dal bordo sinistro */ */
-  margin-top: 20px;   /* distanza dal bordo superiore */ 
+  margin: 20px auto;   /* uniforma i margini */ 
   text-align: center; /* allinea il testo contenuto al centro */
 }
 .slideshow-images img 
@@ -131,6 +130,7 @@ form input, form textarea, form button
   object-fit: cover; /* l’immagine viene ridimensionata per coprire tutta l’area senza deformarsi, ritagliando se necessario. */
   border-radius: 10px;
   object-position: center;
+  margin: 0 auto; /* Aggiungi il margine automatico per centrarle */
 }
 
 .slideshow-images img.active 
