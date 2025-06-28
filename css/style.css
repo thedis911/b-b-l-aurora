@@ -75,22 +75,6 @@ header nav ul li:nth-child(even) {
 /* Sezioni */
 
 /* blocco che permette di impostare due sezioni una di fianco l'altra */
-.side-by-side 
-{
-  display: flex;
-  gap: 200px; /* spazio tra le due sezioni */
-  max-width: 1200px; /* la larghezza che usi nel resto del sito */
-  margin-left: 0;
-  justify-content: center; /* opzionale, per centrare orizzontalmente */
-  align-items: flex-start; /* allinea in alto */
-  flex-wrap: wrap;     /* per gestire bene su schermi piccoli */
-}
-
-.side-by-side section {
-  flex: 1 1 45%;       /* occupa circa metà larghezza ciascuna */
-  box-sizing: border-box;
-  min-width: 300px; /* evita che diventino troppo strette su schermi piccoli */
-}
 
 section 
 {
