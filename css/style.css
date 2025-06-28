@@ -83,10 +83,12 @@ header nav ul li:nth-child(even) {
   margin-left: 0;
   justify-content: center; /* opzionale, per centrare orizzontalmente */
   align-items: flex-start; /* allinea in alto */
+  flex-wrap: wrap;     /* per gestire bene su schermi piccoli */
 }
 
 .side-by-side section {
-  flex: 1; /* fa sì che entrambe le sezioni occupino metà dello spazio disponibile */
+  flex: 1 1 45%;       /* occupa circa metà larghezza ciascuna */
+  box-sizing: border-box;
   min-width: 300px; /* evita che diventino troppo strette su schermi piccoli */
 }
 
