@@ -82,7 +82,7 @@ h1 /* sezioni dei titoli */
 {
   font-weight: 600; /* grassetto */
   color: white; /* testo in bianco */
-  margin-left: 20px;   /* distanza dal bordo sinistro */
+  margin: 16px 0 0 20px;  /* Margine: top 16px, right 0px, bottom 0px, left 20px */
   max-width: 600px;    /* larghezza massima */
 }
 
@@ -91,7 +91,7 @@ p, li, span, div
 {
   font-weight: normal; /* grassetto */
   color: white; /* testo in bianco */
-  margin-left: 20px; /* distanza dal bordo sinistro */
+  margin: 16px 0 0 20px;  /* Margine: top 16px, right 0px, bottom 0px, left 20px */
   max-width: 600px;    /* larghezza massima */
 }
 
@@ -119,7 +119,7 @@ form input, form textarea, form button
 {
   position: relative;  
   max-width: 600px; /* limita la larghezza del box che contiene le foto massima a 600 pixel.  */
-  margin: 20px auto;   /* uniforma i margini */ 
+  margin: 16px 0 0 20px auto;   /* Margine: top 16px, right 0px, bottom 0px, left 20px */
   text-align: center; /* allinea il testo contenuto al centro */
 }
 .slideshow-images img 
