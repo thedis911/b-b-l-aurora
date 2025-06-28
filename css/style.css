@@ -187,5 +187,23 @@ form input, form textarea, form button
   font-size: 1.2em;
 }
 
+/* riquadri sui link a airbnb e booking */
+.booking-links 
+{
+  display: inline-block;       /* In modo che il box si adatti al contenuto */
+  border: 1px solid #ccc;      /* bordo grigio chiaro */
+  padding: 8px 12px;           /* spazio interno */
+  border-radius: 6px;          /* angoli arrotondati */
+  background-color: white;     /* sfondo bianco */
+  box-shadow: 0 0 5px rgba(0,0,0,0.1); /* ombra leggera */
+}
+.booking-links a 
+{
+  text-decoration: none;       /* togli sottolineatura se vuoi */
+  color: #0077cc;              /* colore link (blu) */
+}
+.booking-links a:hover {
+  text-decoration: underline;  /* effetto al passaggio del mouse */
+}
 
 
