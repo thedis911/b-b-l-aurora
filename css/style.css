@@ -1,25 +1,25 @@
 /* Corpo pagina */
 body 
 {
-  font-family: sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #004080; /* stesso colore dell'header */
-  color: white; /* testo bianco */
+  font-family: sans-serif;         /* Usa un carattere senza grazie per tutto il testo */
+  margin: 0;                       /* Elimina il margine esterno predefinito del browser */
+  padding: 0;                      /* Elimina il padding interno predefinito del browser */
+  background-color: #004080;       /* Imposta lo sfondo della pagina con un blu scuro (#004080) */
+  color: white;                    /* Imposta il colore del testo in bianco */
 }
 
 /* Header e navigazione */
 header nav 
 {
-  background-color: #004080;
-  padding: 20px 0;
-  text-align: center;
-  font-family: 'Poppins', sans-serif;
-  position: sticky;
-  top: 0;
-  z-index: 999;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  font-weight: 600;
+  background-color: #004080;      /* Sfondo blu scuro, uguale al body */
+  padding: 20px 0;                /* Spazio interno sopra e sotto di 20px, zero ai lati */
+  text-align: center;             /* Centra orizzontalmente il contenuto (es. i link del menu) */
+  font-family: 'Poppins', sans-serif;  /* Usa il font “Poppins”, con fallback a sans-serif */
+  position: sticky;               /* Posiziona il nav “appiccicato” in alto quando si scorre */
+  top: 0;                        /* Lo sticky inizia a partire dalla cima della pagina */
+  z-index: 999;                  /* Lo mette sopra quasi tutti gli altri elementi, evitando che venga coperto */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Ombra sottile sotto la barra per un effetto rilievo */
+  font-weight: 600;              /* Testo semi-grassetto */
 }
 
 header nav ul 
@@ -43,15 +43,15 @@ header nav ul li
 header nav ul li a 
 {
   text-decoration: none;
-  color: white;
+  color: white; /* è il colore del tag in alto nell'header*/
   font-weight: 600;
-  padding: 0 5px;
+  padding: 0 5px; /* distanzia i tag nell'header*/
   transition: color 0.3s ease;
 }
 
 header nav ul li a:hover 
 {
-  color: #ffd700;
+  color: #ffd700; /* è il colore del tag in alto nell'header quando ci passo col mouse*/
 }
 
 header nav ul li button 
@@ -60,7 +60,7 @@ header nav ul li button
   border: none;
   color: white;
   font-size: 1.2rem;
-  cursor: pointer;
+  cursor: pointer; /* Cambia il cursore in una mano quando si passa sopra il bottone, indicando che è cliccabile. */
 }
 
 header nav ul li:nth-child(odd) 
@@ -78,19 +78,21 @@ header nav ul li:nth-child(even) {
 
 /* Blocchi titoli (grassetto) */
 
-h1, h2, h3, h4, h5, h6 
+h1, h2, h3, h4, h5, h6 /* sezioni dei titoli */
 {
   font-weight: 600; /* grassetto */
-  color: white;
-  margin-left: 20px;   
+  color: white; /* testo in bianco */
+  margin-left: 20px;   /* distanza dal bordo sinistro */
+  max-width: 600px;    /* larghezza massima */
 }
 
-/* Testo normale */
+/* Testo sottotitolo */
 p, li, span, div 
 {
-  font-weight: normal;
-  color: white;
-  margin-left: 20px; 
+  font-weight: normal; /* grassetto */
+  color: white; /* testo in bianco */
+  margin-left: 20px; /* distanza dal bordo sinistro */
+  max-width: 600px;    /* larghezza massima */
 }
 
 footer 
@@ -100,32 +102,32 @@ footer
   color: white;         /* testo bianco */
   padding: 20px;
 }
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  max-width: 400px;
+form 
+{
+  display: flex; /*  trasforma il form in un contenitore */
+  flex-direction: column;  /*  dispone gli elementi figli verticalmente */
+  gap: 10px; /*  aggiunge uno spazio di 10px verticale tra ogni elemento  */
+  max-width: 600px;
 }
 form input, form textarea, form button 
 {
-  padding: 10px;
-  font-size: 1rem;
+  padding: 10px; /*  aggiunge 10 pixel di spazio interno su tutti i lati del form  */
+  font-size: 1rem; 
 }
 .slideshow-container 
 {
-  position: relative;
-  max-width: 600px;
-  margin: 30px 0;
-  text-align: left;
-  padding-left: 0;
+  position: relative;  
+  max-width: 600px; /* limita la larghezza del box che contiene le foto massima a 600 pixel.  */
+  margin-left: 20px;   /* distanza dal bordo sinistro */
+  margin-top: 20px;   /* distanza dal bordo sinistro */ 
+  text-align: center; /* allinea il testo contenuto al centro */
 }
-
 .slideshow-images img 
 {
   display: none;
-  width: 100%;
-  height: 400px;
-  object-fit: cover;
+  width: 100%; /* ogni immagine occupa il 100% della larghezza del contenitore */
+  height: 400px; /* altezza fissa di 400 pixel. */
+  object-fit: cover; /* l’immagine viene ridimensionata per coprire tutta l’area senza deformarsi, ritagliando se necessario. */
   border-radius: 10px;
   object-position: center;
 }
@@ -134,6 +136,8 @@ form input, form textarea, form button
 {
   display: block;
 }
+
+/* frecce di navigazione delle foto nel contenitore. */
 
 .slideshow-container .prev,
 .slideshow-container .next 
@@ -156,7 +160,7 @@ form input, form textarea, form button
 
 .slideshow-title 
 {
-  text-align: left;
+  text-align: center;
   font-weight: normal;
   font-size: 1.2rem;
   margin-bottom: 10px;
