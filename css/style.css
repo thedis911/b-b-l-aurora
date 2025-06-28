@@ -74,12 +74,24 @@ header nav ul li:nth-child(even) {
 
 /* Sezioni */
 
-/* blocco che permette di impostare due sezioni una di fianco l'altra */
+/* Wrapper per struttura e servizi affiancati */
+.struttura-servizi-wrapper {
+  display: flex;
+  flex-wrap: wrap; /* per responsività su mobile */
+  gap: 40px;
+  margin: 40px auto;
+  max-width: 1200px;
+  justify-content: center;
+  align-items: flex-start;
+}
 
-section 
-{
-  padding: 40px;
-  text-align: left;
+/* Stile base delle due sezioni */
+.struttura-servizi-wrapper section {
+  flex: 1 1 500px; /* cresce, rimpicciolisce, min larghezza */
+  padding: 20px;
+  box-sizing: border-box;
+  background-color: #f9f9f9;
+  border-radius: 10px;
 }
 /* Titoli uniformi per tutte le sezioni e slideshow */
 
