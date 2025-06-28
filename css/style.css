@@ -1,11 +1,16 @@
-body {
+/* Corpo pagina */
+body 
+{
   font-family: sans-serif;
   margin: 0;
   padding: 0;
   background-color: #004080; /* stesso colore dell'header */
   color: white; /* testo bianco */
 }
-header nav {
+
+/* Header e navigazione */
+header nav 
+{
   background-color: #004080;
   padding: 20px 0;
   text-align: center;
@@ -17,7 +22,8 @@ header nav {
   font-weight: 600;
 }
 
-header nav ul {
+header nav ul 
+{
   list-style: none;
   margin: 0;
   padding: 0;
@@ -27,13 +33,15 @@ header nav ul {
   align-items: center;
 }
 
-header nav ul li {
+header nav ul li 
+{
   display: inline;
   font-size: 1.2rem;
   color: white;
 }
 
-header nav ul li a {
+header nav ul li a 
+{
   text-decoration: none;
   color: white;
   font-weight: 600;
@@ -41,11 +49,13 @@ header nav ul li a {
   transition: color 0.3s ease;
 }
 
-header nav ul li a:hover {
+header nav ul li a:hover 
+{
   color: #ffd700;
 }
 
-header nav ul li button {
+header nav ul li button 
+{
   background: none;
   border: none;
   color: white;
@@ -53,18 +63,35 @@ header nav ul li button {
   cursor: pointer;
 }
 
-header nav ul li:nth-child(odd) {
-  padding: 0 10px;
+header nav ul li:nth-child(odd) 
+{
+  padding: 0 10px; 
 }
 
 header nav ul li:nth-child(even) {
   color: #ffffff88; /* separatori | traslucidi */
 }
-section {
+
+/* Sezioni */
+section 
+{
   padding: 40px;
   text-align: left;
 }
-footer {
+/* Titoli uniformi per tutte le sezioni e slideshow */
+section h1,
+section h2,
+section p,
+section li,
+.slideshow-title {
+  color: white;
+  font-weight: normal;
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+footer 
+{
   text-align: center;
   background: #004080; /* stesso blu dell'header */
   color: white;         /* testo bianco */
@@ -76,32 +103,34 @@ form {
   gap: 10px;
   max-width: 400px;
 }
-form input, form textarea, form button {
+form input, form textarea, form button 
+{
   padding: 10px;
   font-size: 1rem;
 }
- section p, section h1, section h2, section li {
-  color: white;
-} 
-.slideshow-container {
+.slideshow-container 
+{
   position: relative;
   max-width: 600px;
   margin: 30px 0;
   text-align: left;
 }
 
-.slideshow-images img {
+.slideshow-images img 
+{
   display: none;
   width: 100%;
   border-radius: 10px;
 }
 
-.slideshow-images img.active {
+.slideshow-images img.active 
+{
   display: block;
 }
 
 .slideshow-container .prev,
-.slideshow-container .next {
+.slideshow-container .next 
+{
   cursor: pointer;
   position: absolute;
   top: 45%;
