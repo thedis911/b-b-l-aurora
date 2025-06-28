@@ -187,6 +187,28 @@ form input, form textarea, form button
   font-size: 1.2em;
 }
 
+/* sistemo allineamento a sinistra con resto delle sezioni */
+
+#contatti 
+{
+  margin-left: 20px;
+  max-width: 600px;
+}
+
+#contatti h1 
+{
+  margin-left: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+#contatti form 
+{
+  margin-left: 0;
+  max-width: 600px;
+}
+
 /* riquadri sui link a airbnb e booking */
 .booking-links 
 {
