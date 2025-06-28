@@ -73,6 +73,23 @@ header nav ul li:nth-child(even) {
 }
 
 /* Sezioni */
+
+/* blocco che permette di impostare due sezioni una di fianco l'altra */
+.side-by-side 
+{
+  display: flex;
+  gap: 40px; /* spazio tra le due sezioni */
+  max-width: 1200px; /* o la larghezza che usi nel resto del sito */
+  margin-left: 0;
+  justify-content: center; /* opzionale, per centrare orizzontalmente */
+  align-items: flex-start; /* allinea in alto */
+}
+
+.side-by-side section {
+  flex: 1; /* fa sì che entrambe le sezioni occupino metà dello spazio disponibile */
+  min-width: 300px; /* evita che diventino troppo strette su schermi piccoli */
+}
+
 section 
 {
   padding: 40px;
