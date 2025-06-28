@@ -78,8 +78,8 @@ header nav ul li:nth-child(even) {
 .side-by-side 
 {
   display: flex;
-  gap: 40px; /* spazio tra le due sezioni */
-  max-width: 1200px; /* o la larghezza che usi nel resto del sito */
+  gap: 200px; /* spazio tra le due sezioni */
+  max-width: 1200px; /* la larghezza che usi nel resto del sito */
   margin-left: 0;
   justify-content: center; /* opzionale, per centrare orizzontalmente */
   align-items: flex-start; /* allinea in alto */
@@ -175,11 +175,12 @@ form input, form textarea, form button
 .slideshow-container .prev { left: 10px; }
 .slideshow-container .next { right: 10px; }
 
-.slideshow-title {
+.slideshow-title 
+{
   text-align: left;
   font-weight: normal;
   font-size: 1.2rem;
   margin-bottom: 10px;
 }  
-}
+
 
