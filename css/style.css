@@ -80,7 +80,7 @@ header nav ul li:nth-child(even) {
   display: flex;
   flex-wrap: wrap; /* per responsività su mobile */
   background-color: transparent; /* niente sfondo */
-  gap: 200px;
+  gap: 80px;
   margin-top: 20px;
   max-width: 1200px;
   margin-left: 20px; 
