@@ -126,7 +126,10 @@ form input, form textarea, form button
 {
   display: none;
   width: 100%;
+  height: 600px;
+  object-fit: cover;
   border-radius: 10px;
+  object-position: center;
 }
 
 .slideshow-images img.active 
