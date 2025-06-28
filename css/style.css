@@ -101,10 +101,6 @@ footer
   background: #004080; /* stesso blu dell'header */
   color: white;         /* testo bianco */
   padding: 20px;
-  margin: 0 auto;
-  display: block;
-  box-sizing: border-box;
-  width: 100%;
 }
 form 
 {
