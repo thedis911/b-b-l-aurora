@@ -191,7 +191,7 @@ form input, form textarea, form button
 
 #contatti 
 {
-  margin-left: 20px;
+  margin-left: 0 !important;
   max-width: 600px;
 }
 
