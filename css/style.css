@@ -108,6 +108,7 @@ form
   flex-direction: column;  /*  dispone gli elementi figli verticalmente */
   gap: 10px; /*  aggiunge uno spazio di 10px verticale tra ogni elemento  */
   max-width: 600px;
+  margin-left: 20px; /* distanza dal bordo sinistro */
 }
 form input, form textarea, form button 
 {
@@ -118,8 +119,8 @@ form input, form textarea, form button
 {
   position: relative;  
   max-width: 600px; /* limita la larghezza del box che contiene le foto massima a 600 pixel.  */
-  margin-left: 20px;   /* distanza dal bordo sinistro */
-  margin-top: 20px;   /* distanza dal bordo sinistro */ 
+  padding-left: 20px;   /* distanza dal bordo sinistro */
+  margin-top: 20px;   /* distanza dal bordo superiore */ 
   text-align: center; /* allinea il testo contenuto al centro */
 }
 .slideshow-images img 
