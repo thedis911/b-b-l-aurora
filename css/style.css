@@ -74,32 +74,11 @@ header nav ul li:nth-child(even) {
 
 /* Sezioni */
 
-/* Wrapper per struttura e servizi affiancati */
-.struttura-servizi-wrapper 
-{
-  display: flex;
-  flex-wrap: wrap; /* per responsività su mobile */
-  background-color: transparent; /* niente sfondo */
-  gap: 80px;
-  margin-top: 20px;
-  max-width: 1200px;
-  margin-left: 20px; 
-}
-
-/* Stile base delle due sezioni */
-.struttura-servizi-wrapper section 
-{
-  /*flex: 1 1 500px; */ /* cresce, rimpicciolisce, min larghezza */
-  padding: 0;
-  background-color: transparent; /* niente sfondo */
-  border: none; /* niente bordi */
-  border-radius: 0; /* niente angoli arrotondati */ 
-}
 /* Titoli uniformi per tutte le sezioni e slideshow */
 
 /* Blocchi titoli (grassetto) */
 
-h1, h2, h3,h4,h5,h6 
+h1, h2, h3, h4, h5, h6 
 {
   font-weight: 600; /* grassetto */
   color: white;
@@ -111,6 +90,7 @@ p, li, span, div
 {
   font-weight: normal;
   color: white;
+  margin-left: 20px; 
 }
 
 footer 
