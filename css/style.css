@@ -2,6 +2,8 @@ body {
   font-family: sans-serif;
   margin: 0;
   padding: 0;
+  background-color: #004080; /* stesso colore dell'header */
+  color: white; /* testo bianco */
 }
 header nav {
   background-color: #004080;
@@ -12,6 +14,7 @@ header nav {
   top: 0;
   z-index: 999;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  font-weight: 600;
 }
 
 header nav ul {
@@ -62,7 +65,8 @@ section {
 }
 footer {
   text-align: center;
-  background: #f1f1f1;
+  background: #004080; /* stesso blu dell'header */
+  color: white;         /* testo bianco */
   padding: 20px;
 }
 form {
@@ -74,5 +78,9 @@ form {
 form input, form textarea, form button {
   padding: 10px;
   font-size: 1rem;
+
+ section p, section h1, section h2, section li {
+  color: white;
+} 
 }
 
