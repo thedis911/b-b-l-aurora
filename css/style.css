@@ -75,23 +75,25 @@ header nav ul li:nth-child(even) {
 /* Sezioni */
 
 /* Wrapper per struttura e servizi affiancati */
-.struttura-servizi-wrapper {
+.struttura-servizi-wrapper 
+{
   display: flex;
   flex-wrap: wrap; /* per responsività su mobile */
-  gap: 40px;
+  background-color: transparent; /* niente sfondo */
+  gap: 200px;
   margin: 40px auto;
+  margin-top: 20px;
   max-width: 1200px;
-  justify-content: center;
-  align-items: flex-start;
 }
 
 /* Stile base delle due sezioni */
-.struttura-servizi-wrapper section {
-  flex: 1 1 500px; /* cresce, rimpicciolisce, min larghezza */
-  padding: 20px;
-  box-sizing: border-box;
-  background-color: #f9f9f9;
-  border-radius: 10px;
+.struttura-servizi-wrapper section 
+{
+  /*flex: 1 1 500px; */ /* cresce, rimpicciolisce, min larghezza */
+  padding: 0;
+  background-color: transparent; /* niente sfondo */
+  border: none; /* niente bordi */
+  border-radius: 0; /* niente angoli arrotondati */ 
 }
 /* Titoli uniformi per tutte le sezioni e slideshow */
 
