@@ -24,9 +24,11 @@ header nav
 .nav-top 
 {
   display: flex;
-  padding: 0 20px; /* bordo sinistro e destro */
   justify-content: space-between;
   align-items: center;
+  max-width: 600px;
+  margin-left: 20px;
+  margin-right: auto;
 }
 
 header nav ul 
