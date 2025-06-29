@@ -118,7 +118,10 @@ footer
 
 footer p 
 {
-  margin-left: 0; /* gestisco l'allineamento rimuovendo i margini che ho dichiarato nel blocco p, li, span, div */
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  margin-top: 0;
+  margin-bottom: 0;
   text-align: center;
 }
 
