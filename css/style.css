@@ -100,7 +100,7 @@ h1 /* sezioni dei titoli */
 }
 
 /* Testo sottotitolo */
-p, li, span, div 
+main p, main li, main span, main div 
 {
   font-weight: normal; /* grassetto */
   color: white; /* testo in bianco */
