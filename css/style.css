@@ -276,7 +276,7 @@ form input, form textarea, form button
 
   #navbar 
   {
-    display: none;             /* nascosto di default */
+    display: none !important;             /* nascosto di default */
     flex-direction: column;
     width: 100%;
     gap: 10px;
@@ -285,7 +285,7 @@ form input, form textarea, form button
 
   #navbar.show 
   {
-    display: flex;             /* mostrato quando l'utente clicca */
+    display: flex !important;             /* mostrato quando l'utente clicca */
   }
 
   #navbar li 
