@@ -25,13 +25,13 @@
   
 <header>
   <nav>
-    
+
+   <div class="nav-top">  
     <div class="nav-logo">
       <img src="immagini/logo.png" alt="Logo B&B L'Aurora">
     </div>
 
-    <div class="hamburger" onclick="toggleMenu()">
-    &#9776;
+    <div class="hamburger" onclick="toggleMenu()">&#9776;
     </div>
     
     <ul id="navbar">
@@ -382,7 +382,8 @@
 <!-- MENU MOBILE -->
 
 <script>
-  function toggleMenu() {
+  function toggleMenu() 
+  {
     const navbar = document.getElementById('navbar');
     navbar.classList.toggle('show');
   }
