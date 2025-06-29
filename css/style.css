@@ -245,7 +245,7 @@ form input, form textarea, form button
 
 .nav-logo img 
 {
-  height: 60px; /* puoi regolare la dimensione se necessario */
+  height: 80px; /* puoi regolare la dimensione se necessario */
   width: auto;
   vertical-align: middle;
 }
