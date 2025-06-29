@@ -35,9 +35,11 @@ header nav ul
   padding: 0;
   display: flex;
   gap: 18px;
-  flex-wrap: wrap;
+  flex-wrap: nowrap; /* forza una singola riga */
+  overflow-x: auto;   /* utile se serve lo scroll orizzontale */  
+  white-space: nowrap; 
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 header nav ul li 
