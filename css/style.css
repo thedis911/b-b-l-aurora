@@ -11,14 +11,14 @@ body
 /* Header e navigazione */
 header nav 
 {
-  background-color: #004080;
-  padding: 20px;
+  background-color: #004080;  /* Sfondo blu scuro, uguale al body */
+  padding: 20px; /* Spazio interno sopra e sotto di 20px, zero ai lati */
   font-family: 'Poppins', sans-serif;
-  position: sticky;
-  top: 0;
-  z-index: 999;
+  position: sticky; /* Posiziona il nav “appiccicato” in alto quando si scorre */
+  top: 0; /* Lo sticky inizia a partire dalla cima della pagina */
+  z-index: 999; /* Lo mette sopra quasi tutti gli altri elementi, evitando che venga coperto */
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  font-weight: 600;
+  font-weight: 600; /* Testo semi-grassetto */
 }
 
 .nav-top 
@@ -115,6 +115,13 @@ footer
   color: white;         /* testo bianco */
   padding: 20px;
 }
+
+footer p 
+{
+  margin-left: 0; /* gestisco l'allineamento rimuovendo i margini che ho dichiarato nel blocco p, li, span, div */
+  text-align: center;
+}
+
 form 
 {
   display: flex; /*  trasforma il form in un contenitore */
