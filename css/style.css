@@ -194,9 +194,9 @@ form input, form textarea, form button
   margin-bottom: 10px;
 }  
 
-/* icona facebook */
+/* icone social */
 
-.facebook-icon 
+.social-icon 
 {
   display: inline-block;
   background-color: white;
@@ -207,10 +207,15 @@ form input, form textarea, form button
   text-decoration: none;
 }
 
-.facebook-icon i 
+.social-icon i.fa-facebook 
 {
   color: #1877f2;
   font-size: 1.2em;
+}
+
+.social-icon i.fa-whatsapp 
+{
+  color: #25D366; /* verde WhatsApp */
 }
 
 /* sistemo allineamento a sinistra con resto delle sezioni */
