@@ -36,7 +36,6 @@ header nav ul
   display: flex;
   gap: 18px;
   flex-wrap: nowrap; /* forza una singola riga */
-  overflow-x: auto;   /* utile se serve lo scroll orizzontale */  
   white-space: nowrap; 
   align-items: center;
   justify-content: flex-start;
