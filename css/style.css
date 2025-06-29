@@ -11,18 +11,21 @@ body
 /* Header e navigazione */
 header nav 
 {
-  background-color: #004080;      /* Sfondo blu scuro, uguale al body */
-  padding: 20px 0;                /* Spazio interno sopra e sotto di 20px, zero ai lati */
-  text-align: center;             /* Centra orizzontalmente il contenuto (es. i link del menu) */
-  font-family: 'Poppins', sans-serif;  /* Usa il font “Poppins”, con fallback a sans-serif */
-  position: sticky;               /* Posiziona il nav “appiccicato” in alto quando si scorre */
-  top: 0;                        /* Lo sticky inizia a partire dalla cima della pagina */
-  z-index: 999;                  /* Lo mette sopra quasi tutti gli altri elementi, evitando che venga coperto */
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Ombra sottile sotto la barra per un effetto rilievo */
-  font-weight: 600;              /* Testo semi-grassetto */
+  background-color: #004080;
+  padding: 20px;
+  font-family: 'Poppins', sans-serif;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  font-weight: 600;
+}
+
+.nav-top 
+{
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: flex-start;
 }
 
 header nav ul 
@@ -34,6 +37,7 @@ header nav ul
   gap: 18px;
   flex-wrap: wrap;
   align-items: center;
+  justify-content: center;
 }
 
 header nav ul li 
@@ -73,6 +77,11 @@ header nav ul li:nth-child(odd)
 
 header nav ul li:nth-child(even) {
   color: #ffffff88; /* separatori | traslucidi */
+}
+
+#navbar.show 
+{
+  display: flex;
 }
 
 /* Sezioni */
@@ -265,10 +274,7 @@ form input, form textarea, form button
 {
   .hamburger 
   {
-    display: block;
-    font-size: 30px;
-    color: white;
-    cursor: pointer;   
+    display: block;  
   }
 
 /* RIGA per logo + hamburger */
@@ -277,28 +283,20 @@ form input, form textarea, form button
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
-  }
-
-  header nav 
-  {
-    flex-direction: column;
-    align-items: stretch;
-    padding: 10px 20px;
   }
 
   #navbar 
   {
-    display: none !important;             /* nascosto di default */
+    display: none;             /* nascosto di default */
     flex-direction: column;
-    width: 100%;
-    gap: 10px;
+    align-items: flex-start;
     margin-top: 10px;
+    margin-left: 20px;
   }
 
   #navbar.show 
   {
-    display: flex !important;             /* mostrato quando l'utente clicca */
+    display: flex;             /* mostrato quando l'utente clicca */
   }
 
   #navbar li 
