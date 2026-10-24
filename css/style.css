@@ -110,6 +110,14 @@ main p, main li, main span, main div
   max-width: 600px;    /* larghezza massima */
 }
 
+/* i testi di "Home" e "La nostra struttura" occupano tutta la larghezza della pagina */
+#home h1, #home p,
+#struttura h1, #struttura > p
+{
+  max-width: none;
+  margin-right: 20px;
+}
+
 footer 
 {
   text-align: center;
@@ -302,8 +310,8 @@ main div.carousel-track
 
 #contatti div.calendar
 {
-  flex: 0 1 320px;
-  max-width: 360px;
+  flex: 0 1 360px;
+  max-width: 400px;
   margin: 0;
   padding: 14px;
   background-color: white;
@@ -376,6 +384,15 @@ main div.carousel-track
   background: none;
   color: #004080;
   cursor: pointer;
+}
+
+/* prezzo della notte sotto il numero */
+#contatti form button.calendar-day small
+{
+  display: block;
+  font-size: 0.6rem;
+  line-height: 1.2;
+  opacity: 0.8;
 }
 
 #contatti form button.calendar-day:hover:not(:disabled)
