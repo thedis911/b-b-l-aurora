@@ -26,9 +26,8 @@ header nav
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 600px;
-  margin-left: 20px;
-  margin-right: auto;
+  gap: 20px;
+  margin: 0 20px; /* tutta la larghezza della pagina, senza uscire a destra */
 }
 
 header nav ul 
@@ -37,8 +36,8 @@ header nav ul
   margin: 0;
   padding: 0;
   display: flex;
-  gap: 18px;
-  flex-wrap: nowrap; /* forza una singola riga */
+  gap: 8px;
+  flex-wrap: wrap; /* se lo spazio non basta va a capo invece di uscire dalla pagina */
   white-space: nowrap; 
   align-items: center;
   justify-content: flex-start;
@@ -142,13 +141,13 @@ form input, form textarea, form button
   padding: 10px; /*  aggiunge 10 pixel di spazio interno su tutti i lati del form  */
   font-size: 1rem; 
 }
-/* Caroselli foto: scorrono in orizzontale, due foto affiancate */
+/* Caroselli foto: scorrono in orizzontale su tutta la larghezza della pagina */
 
 main div.carousel
 {
   position: relative;
-  max-width: 900px;
-  margin: 16px 20px 0 20px;
+  max-width: none;
+  margin: 16px 0 0 0;
   padding: 20px 0; /* spazio per lo zoom senza tagliare le foto */
   overflow: hidden;
 }
@@ -180,7 +179,7 @@ main div.carousel-track
 {
   position: relative;
   flex: 0 0 auto;
-  width: 440px; /* due foto affiancate nel riquadro da 900px */
+  width: 440px;
   margin: 0;
   transition: transform 0.4s ease, opacity 0.4s ease;
   cursor: pointer;
@@ -282,33 +281,14 @@ main div.carousel-track
   margin-left: 0; /* annulla margine sinistro */
 }
 
-/* riquadri sui link a airbnb e booking */
-.booking-links 
-{
-  display: inline-block;       /* In modo che il box si adatti al contenuto */
-  border: 1px solid #ccc;      /* bordo grigio chiaro */
-  padding: 8px 12px;           /* spazio interno */
-  border-radius: 6px;          /* angoli arrotondati */
-  background-color: white;     /* sfondo bianco */
-  box-shadow: 0 0 5px rgba(0,0,0,0.1); /* ombra leggera */
-}
-.booking-links a 
-{
-  text-decoration: none;       /* togli sottolineatura se vuoi */
-  color: #0077cc;              /* colore link (blu) */
-}
-.booking-links a:hover {
-  text-decoration: underline;  /* effetto al passaggio del mouse */
-}
-
-/* pulsanti Booking.com e Airbnb nei contatti */
+/* pulsanti Booking.com e Airbnb in "Prenota ora" */
 
 main div.booking-buttons
 {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
-  margin: 10px 0 16px 0;
+  margin: 16px 0 0 20px;
 }
 
 .booking-button
