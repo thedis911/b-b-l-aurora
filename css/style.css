@@ -261,7 +261,7 @@ main div.carousel-track
 {
   margin-left: 20px;
   margin-right: 20px;
-  max-width: 1000px;
+  max-width: none;
 }
 
 #contatti h1 
@@ -294,6 +294,11 @@ main div.carousel-track
 }
 
 /* calendario per scegliere le date del soggiorno */
+
+#contatti div.calendar[hidden]
+{
+  display: none;
+}
 
 #contatti div.calendar
 {
@@ -414,14 +419,65 @@ main div.carousel-track
   margin-left: 0; /* annulla margine sinistro */
 }
 
-/* pulsanti Booking.com e Airbnb in "Prenota ora" */
+/* "Prenota ora" a destra di "Contattaci": pulsante + loghi Booking.com e Airbnb */
 
-main div.booking-buttons
+#contatti div.booking-panel
+{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  margin: 0;
+}
+
+#contatti form button.booking-toggle
+{
+  padding: 12px 22px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #004080;
+  background-color: #ffd700;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 0 5px rgba(0,0,0,0.15);
+}
+
+#contatti form button.booking-toggle:hover,
+#contatti form button.booking-toggle.open
+{
+  background-color: #ffe34d;
+}
+
+#contatti div.booking-buttons
 {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
-  margin: 16px 0 0 20px;
+  margin: 0;
+}
+
+/* scelta Camera 1 / Camera 2 / Entrambe */
+#contatti .calendar div.room-choice
+{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 16px;
+  margin-bottom: 12px;
+}
+
+#contatti .room-choice label
+{
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+}
+
+#contatti .room-choice input
+{
+  padding: 0;
+  margin: 0;
 }
 
 .booking-button
@@ -543,6 +599,12 @@ main span.booking-logo span
   {
     height: 40px;
   }  
+
+  /* su mobile il calendario si apre sotto il pulsante "Prenota ora" */
+  #contatti div.calendar
+  {
+    order: 1;
+  }
 
   /* su mobile una foto e mezza alla volta */
   .carousel-item

@@ -203,39 +203,8 @@
 
 </section>
 
-<!-- Sezione "prenotazioni" -->  
 
-  <section id="prenotazioni">
-    <h1 
-        data-it="Prenota Ora"
-        data-en="Book Now"
-    >Prenota Ora
-    </h1>
-    
-    <div class="booking-buttons">
-      <a href="https://www.booking.com/hotel/it/aurora-porto-torres.it.html"
-         class="booking-button"
-         target="_blank"
-         rel="noopener"
-         aria-label="Prenota su Booking.com"
-         title="Booking.com"
-      >
-        <span class="booking-logo" aria-hidden="true">B<span>.</span></span>
-      </a>
-
-      <a href="https://www.airbnb.ie/rooms/1434869856204546832"
-         class="booking-button"
-         target="_blank"
-         rel="noopener"
-         aria-label="Prenota su Airbnb"
-         title="Airbnb"
-      >
-        <i class="fab fa-airbnb" aria-hidden="true"></i>
-      </a>
-    </div>
-  </section>  
-
-<!-- Sezione "Contatti" -->   
+<!-- Sezione "Contatti" (con "Prenota ora" a destra) -->   
 
   <section id="contatti">
     <h1>
@@ -278,11 +247,17 @@
 
 <!-- Calendario: le date scelte arrivano nella mail insieme al messaggio -->
 
-      <div class="calendar" id="calendar">
+      <div class="calendar" id="calendar" hidden>
         <p class="calendar-hint"
-           data-it="Scegli le date del soggiorno (facoltativo)"
-           data-en="Choose your stay dates (optional)"
-        >Scegli le date del soggiorno (facoltativo)</p>
+           data-it="Scegli la camera e le date del soggiorno"
+           data-en="Choose the room and your stay dates"
+        >Scegli la camera e le date del soggiorno</p>
+
+        <div class="room-choice">
+          <label><input type="radio" name="Camera" value="Camera 1" checked> <span data-it="Camera 1" data-en="Room 1">Camera 1</span></label>
+          <label><input type="radio" name="Camera" value="Camera 2"> <span data-it="Camera 2" data-en="Room 2">Camera 2</span></label>
+          <label><input type="radio" name="Camera" value="Entrambe le camere"> <span data-it="Entrambe" data-en="Both">Entrambe</span></label>
+        </div>
 
         <div class="calendar-header">
           <button type="button" class="calendar-nav" id="cal-prev" aria-label="Mese precedente">&#10094;</button>
@@ -302,6 +277,37 @@
         <input type="hidden" name="Data arrivo" id="cal-in-field">
         <input type="hidden" name="Data partenza" id="cal-out-field">
         <input type="hidden" name="Notti" id="cal-nights-field">
+      </div>
+
+<!-- "Prenota ora": il pulsante apre il calendario, sotto i loghi di Booking.com e Airbnb -->
+
+      <div class="booking-panel" id="prenotazioni">
+        <button type="button" class="booking-toggle" id="booking-toggle"
+                aria-controls="calendar" aria-expanded="false"
+                data-it="Prenota ora" data-en="Book now"
+        >Prenota ora</button>
+
+        <div class="booking-buttons">
+          <a href="https://www.booking.com/hotel/it/aurora-porto-torres.it.html"
+             class="booking-button"
+             target="_blank"
+             rel="noopener"
+             aria-label="Prenota su Booking.com"
+             title="Booking.com"
+          >
+            <span class="booking-logo" aria-hidden="true">B<span>.</span></span>
+          </a>
+    
+          <a href="https://www.airbnb.ie/rooms/1434869856204546832"
+             class="booking-button"
+             target="_blank"
+             rel="noopener"
+             aria-label="Prenota su Airbnb"
+             title="Airbnb"
+          >
+            <i class="fab fa-airbnb" aria-hidden="true"></i>
+          </a>
+        </div>
       </div>
     </form>
   </section>
@@ -461,6 +467,22 @@
       month = new Date(month.getFullYear(), month.getMonth() + 1, 1);
       renderCalendar();
     });
+
+    // "Prenota ora" mostra/nasconde calendario e scelta camera.
+    // Da chiuso i suoi campi sono disattivati, così non finiscono nella mail.
+    const calendar = document.getElementById("calendar");
+    const toggle = document.getElementById("booking-toggle");
+    const setOpen = open => {
+      calendar.hidden = !open;
+      toggle.setAttribute("aria-expanded", open);
+      toggle.classList.toggle("open", open);
+      calendar.querySelectorAll("input").forEach(input => input.disabled = !open);
+    };
+    toggle.addEventListener("click", () => {
+      setOpen(calendar.hidden);
+      if (!calendar.hidden) calendar.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    });
+    setOpen(false);
 
     document.getElementById("cal-clear").addEventListener("click", () => {
       checkIn = checkOut = null;
