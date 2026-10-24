@@ -260,7 +260,8 @@ main div.carousel-track
 #contatti 
 {
   margin-left: 20px;
-  max-width: 600px;
+  margin-right: 20px;
+  max-width: 1000px;
 }
 
 #contatti h1 
@@ -271,10 +272,142 @@ main div.carousel-track
   gap: 10px;
 }
 
+/* modulo a sinistra, calendario a destra */
 #contatti form 
 {
   margin-left: 0;
+  max-width: none;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+#contatti div.form-fields
+{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1 1 320px;
   max-width: 600px;
+  margin: 0;
+}
+
+/* calendario per scegliere le date del soggiorno */
+
+#contatti div.calendar
+{
+  flex: 0 1 320px;
+  max-width: 360px;
+  margin: 0;
+  padding: 14px;
+  background-color: white;
+  color: #004080;
+  border-radius: 10px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.15);
+}
+
+#contatti .calendar p,
+#contatti .calendar span,
+#contatti .calendar div
+{
+  margin: 0;
+  max-width: none;
+  color: #004080;
+}
+
+#contatti .calendar p.calendar-hint
+{
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+}
+
+#contatti div.calendar-header
+{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.calendar-nav,
+.calendar-clear
+{
+  background: none;
+  border: none;
+  color: #004080;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 4px 8px;
+}
+
+.calendar-nav:disabled
+{
+  opacity: 0.25;
+  cursor: default;
+}
+
+#contatti div.calendar-grid
+{
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+  text-align: center;
+}
+
+#contatti .calendar span.calendar-weekday
+{
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 4px 0;
+}
+
+#contatti form button.calendar-day
+{
+  padding: 8px 0;
+  font-size: 0.9rem;
+  border: none;
+  border-radius: 6px;
+  background: none;
+  color: #004080;
+  cursor: pointer;
+}
+
+#contatti form button.calendar-day:hover:not(:disabled)
+{
+  background-color: #e6eef7;
+}
+
+#contatti form button.calendar-day:disabled
+{
+  color: #c0c8d2;
+  cursor: default;
+}
+
+#contatti form button.calendar-day.in-range
+{
+  background-color: #e6eef7;
+}
+
+#contatti form button.calendar-day.selected,
+#contatti form button.calendar-day.selected:hover
+{
+  background-color: #004080;
+  color: white;
+}
+
+#contatti div.calendar-summary
+{
+  margin-top: 10px;
+  font-size: 0.9rem;
+}
+
+#contatti form button.calendar-clear
+{
+  display: block;
+  padding: 6px 0 0 0;
+  font-size: 0.85rem;
+  text-decoration: underline;
 }
 
 #contatti h1 span {
@@ -295,8 +428,9 @@ main div.booking-buttons
 {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  padding: 10px 16px;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
   background-color: white;
   color: #004080;
   font-weight: 600;
@@ -314,7 +448,7 @@ main div.booking-buttons
 .booking-button .fa-airbnb
 {
   color: #ff5a5f; /* rosso Airbnb */
-  font-size: 1.4em;
+  font-size: 2.2em;
 }
 
 main span.booking-logo
@@ -322,9 +456,10 @@ main span.booking-logo
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 24px;
-  height: 24px;
+  width: 36px;
+  height: 36px;
   margin: 0;
+  font-size: 1.3rem;
   background-color: #003580; /* blu Booking.com */
   color: white;
   font-weight: 700;
