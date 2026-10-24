@@ -94,6 +94,8 @@
 <!-- Carosello foto della struttura -->
 
   <div class="carousel" aria-label="Foto della struttura">
+    <button type="button" class="carousel-arrow prev" aria-label="Foto precedente">&#10094;</button>
+    <button type="button" class="carousel-arrow next" aria-label="Foto successiva">&#10095;</button>
     <div class="carousel-track">
       <figure class="carousel-item">
         <img src="immagini/struttura/camera-matrimoniale.webp" alt="Camera matrimoniale" loading="lazy" width="600" height="400">
@@ -151,6 +153,8 @@
 <!-- Carosello foto "Nelle vicinanze" -->
 
   <div class="carousel" aria-label="Foto dei luoghi nelle vicinanze">
+    <button type="button" class="carousel-arrow prev" aria-label="Foto precedente">&#10094;</button>
+    <button type="button" class="carousel-arrow next" aria-label="Foto successiva">&#10095;</button>
     <div class="carousel-track">
       <figure class="carousel-item">
         <img src="immagini/vicinanze/balai-1.webp" alt="Porto Torres - Balai" loading="lazy" width="600" height="400">
@@ -241,7 +245,7 @@
 <!-- Sezione "Contattaci" -->  
       
     </h1>
-    <form action="https://formspree.io/f/xpwrbavg" method="POST" class="contact-form">
+    <form action="https://formspree.io/f/xpwrbavg" method="POST" class="contact-form" id="contact-form" novalidate>
       <input type="hidden" name="_subject" value="Nuova richiesta dal sito B&B L'Aurora">
 
       <div class="form-fields">
@@ -251,9 +255,41 @@
         <button type="submit" data-it="Invia" data-en="Send">Invia</button>
       </div>
 
-<!-- Calendario: le date scelte arrivano nella mail insieme al messaggio -->
+<!-- "Prenota ora": invia la richiesta con camera e date; sotto, i loghi di Booking.com e Airbnb -->
 
-      <div class="calendar" id="calendar" hidden>
+      <div class="booking-panel" id="prenotazioni">
+        <button type="submit" class="booking-toggle" id="booking-submit"
+                data-it="Prenota ora" data-en="Book now"
+        >Prenota ora</button>
+
+        <p class="booking-message" id="booking-message" aria-live="polite"></p>
+
+        <div class="booking-buttons">
+          <a href="https://www.booking.com/hotel/it/aurora-porto-torres.it.html"
+             class="booking-button"
+             target="_blank"
+             rel="noopener"
+             aria-label="Prenota su Booking.com"
+             title="Booking.com"
+          >
+            <span class="booking-logo" aria-hidden="true">B<span>.</span></span>
+          </a>
+    
+          <a href="https://www.airbnb.ie/rooms/1434869856204546832"
+             class="booking-button"
+             target="_blank"
+             rel="noopener"
+             aria-label="Prenota su Airbnb"
+             title="Airbnb"
+          >
+            <i class="fab fa-airbnb" aria-hidden="true"></i>
+          </a>
+        </div>
+      </div>
+
+<!-- Calendario sempre visibile: camera e date arrivano nella mail di prenotazione -->
+
+      <div class="calendar" id="calendar">
         <p class="calendar-hint"
            data-it="Scegli la camera e le date del soggiorno"
            data-en="Choose the room and your stay dates"
@@ -287,37 +323,6 @@
         <input type="hidden" name="Data partenza" id="cal-out-field">
         <input type="hidden" name="Notti" id="cal-nights-field">
         <input type="hidden" name="Totale soggiorno" id="cal-total-field">
-      </div>
-
-<!-- "Prenota ora": il pulsante apre il calendario, sotto i loghi di Booking.com e Airbnb -->
-
-      <div class="booking-panel" id="prenotazioni">
-        <button type="button" class="booking-toggle" id="booking-toggle"
-                aria-controls="calendar" aria-expanded="false"
-                data-it="Prenota ora" data-en="Book now"
-        >Prenota ora</button>
-
-        <div class="booking-buttons">
-          <a href="https://www.booking.com/hotel/it/aurora-porto-torres.it.html"
-             class="booking-button"
-             target="_blank"
-             rel="noopener"
-             aria-label="Prenota su Booking.com"
-             title="Booking.com"
-          >
-            <span class="booking-logo" aria-hidden="true">B<span>.</span></span>
-          </a>
-    
-          <a href="https://www.airbnb.ie/rooms/1434869856204546832"
-             class="booking-button"
-             target="_blank"
-             rel="noopener"
-             aria-label="Prenota su Airbnb"
-             title="Airbnb"
-          >
-            <i class="fab fa-airbnb" aria-hidden="true"></i>
-          </a>
-        </div>
       </div>
     </form>
   </section>
@@ -371,6 +376,7 @@
   document.querySelectorAll(".carousel").forEach(carousel => {
     const track = carousel.querySelector(".carousel-track");
     const items = [...track.children];
+    const step = 8000; // millisecondi di animazione = una foto
 
     // duplico le foto per far ripartire lo scorrimento senza salti
     items.forEach(item => {
@@ -380,7 +386,28 @@
     });
 
     // circa 8 secondi per ogni foto
-    track.style.animationDuration = `${items.length * 8}s`;
+    track.style.animationDuration = `${items.length * step}ms`;
+
+    // frecce: spostano il carosello avanti o indietro di una foto
+    const move = dir => {
+      const anim = track.getAnimations()[0];
+      if (!anim) { // animazioni disattivate: scorrimento a mano
+        carousel.scrollBy({ left: dir * items[0].offsetWidth, behavior: "smooth" });
+        return;
+      }
+      const total = items.length * step;
+      const from = anim.currentTime;
+      const start = performance.now();
+      const tween = now => {
+        const k = Math.min((now - start) / 400, 1);
+        const eased = 1 - Math.pow(1 - k, 3);
+        anim.currentTime = (((from + dir * step * eased) % total) + total) % total;
+        if (k < 1) requestAnimationFrame(tween);
+      };
+      requestAnimationFrame(tween);
+    };
+    carousel.querySelector(".prev").addEventListener("click", () => move(-1));
+    carousel.querySelector(".next").addEventListener("click", () => move(1));
 
     // su mobile non c'è il passaggio del mouse: il tocco ferma/riavvia
     track.addEventListener("click", e => {
@@ -575,21 +602,46 @@
       renderCalendar();
     });
 
-    // "Prenota ora" mostra/nasconde calendario e scelta camera.
-    // Da chiuso i suoi campi sono disattivati, così non finiscono nella mail.
-    const calendar = document.getElementById("calendar");
-    const toggle = document.getElementById("booking-toggle");
-    const setOpen = open => {
-      calendar.hidden = !open;
-      toggle.setAttribute("aria-expanded", open);
-      toggle.classList.toggle("open", open);
-      calendar.querySelectorAll("input").forEach(input => input.disabled = !open);
-    };
-    toggle.addEventListener("click", () => {
-      setOpen(calendar.hidden);
-      if (!calendar.hidden) calendar.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    // INVIO DEL MODULO
+    // "Invia" = messaggio semplice; "Prenota ora" = richiesta con camera, date e totale.
+    // Senza nome, email e messaggio validi non parte nessuna mail e i box vuoti diventano rossi.
+    const form = document.getElementById("contact-form");
+    const fields = [...form.querySelectorAll(".form-fields input, .form-fields textarea")];
+    const message = document.getElementById("booking-message");
+    const en = () => document.documentElement.lang === "en";
+
+    const say = (it, eng) => { message.textContent = en() ? eng : it; };
+
+    fields.forEach(f => f.addEventListener("input", () => {
+      if (f.checkValidity()) f.classList.remove("missing");
+    }));
+
+    form.addEventListener("submit", e => {
+      const booking = e.submitter && e.submitter.id === "booking-submit";
+
+      if (booking && !(checkIn && checkOut)) {
+        e.preventDefault();
+        say("Seleziona arrivo e partenza nel calendario.", "Select check-in and check-out in the calendar.");
+        return;
+      }
+
+      const missing = fields.filter(f => !f.checkValidity());
+      fields.forEach(f => f.classList.toggle("missing", missing.includes(f)));
+      if (missing.length) {
+        e.preventDefault();
+        if (booking) {
+          say("Inserisci i tuoi dati nella sezione \"Contattaci\" e verrai ricontattato.",
+              "Enter your details in the \"Contact\" section and we will get back to you.");
+        }
+        return;
+      }
+
+      form.querySelector('input[name="_subject"]').value = booking
+        ? "Richiesta di prenotazione dal sito B&B L'Aurora"
+        : "Nuovo messaggio dal sito B&B L'Aurora";
+      // camera, date e totale solo nella richiesta di prenotazione
+      document.querySelectorAll("#calendar input").forEach(input => input.disabled = !booking);
     });
-    setOpen(false);
 
     // cambiando camera cambiano prezzi e totale
     document.querySelectorAll('input[name="Camera"]').forEach(r => r.addEventListener("change", update));

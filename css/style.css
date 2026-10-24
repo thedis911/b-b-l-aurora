@@ -232,6 +232,31 @@ main div.carousel-track
   text-align: left;
 }
 
+/* frecce per cambiare foto a mano */
+.carousel .carousel-arrow
+{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  width: 44px;
+  height: 44px;
+  border: none;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.55);
+  color: white;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.carousel .carousel-arrow:hover
+{
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.carousel .carousel-arrow.prev { left: 12px; }
+.carousel .carousel-arrow.next { right: 12px; }
+
 /* chi preferisce meno animazioni scorre le foto a mano */
 @media (prefers-reduced-motion: reduce)
 {
@@ -302,11 +327,6 @@ main div.carousel-track
 }
 
 /* calendario per scegliere le date del soggiorno */
-
-#contatti div.calendar[hidden]
-{
-  display: none;
-}
 
 #contatti div.calendar
 {
@@ -460,10 +480,30 @@ main div.carousel-track
   box-shadow: 0 0 5px rgba(0,0,0,0.15);
 }
 
-#contatti form button.booking-toggle:hover,
-#contatti form button.booking-toggle.open
+#contatti form button.booking-toggle:hover
 {
   background-color: #ffe34d;
+}
+
+/* avviso sotto "Prenota ora" */
+#contatti p.booking-message
+{
+  max-width: 220px;
+  margin: 0;
+  font-size: 0.9rem;
+  color: #ffd700;
+}
+
+#contatti p.booking-message:empty
+{
+  display: none;
+}
+
+/* box del modulo da compilare */
+#contatti .form-fields .missing
+{
+  border: 2px solid #e53935;
+  background-color: #fdecea;
 }
 
 #contatti div.booking-buttons
@@ -617,10 +657,15 @@ main span.booking-logo span
     height: 40px;
   }  
 
-  /* su mobile il calendario si apre sotto il pulsante "Prenota ora" */
+  /* su mobile prima il calendario, poi "Prenota ora" */
   #contatti div.calendar
   {
     order: 1;
+  }
+
+  #contatti div.booking-panel
+  {
+    order: 2;
   }
 
   /* su mobile una foto e mezza alla volta */
