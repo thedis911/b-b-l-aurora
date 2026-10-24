@@ -679,3 +679,10 @@ main span.booking-logo span
     height: 220px;
   }
 }
+
+footer p.footer-legal
+{
+  margin-top: 6px;
+  font-size: 0.85em;
+  opacity: 0.85;
+}
