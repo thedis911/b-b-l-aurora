@@ -278,7 +278,7 @@
           &nbsp;
           <span data-it="Partenza:" data-en="Check-out:">Partenza:</span> <strong id="cal-out">-</strong>
           <br>
-          <span data-it="Totale (sconto 10% rispetto a Booking):" data-en="Total (10% off Booking price):">Totale (sconto 10% rispetto a Booking):</span>
+          <span data-it="Totale soggiorno:" data-en="Total stay:">Totale soggiorno:</span>
           <strong id="cal-total">-</strong>
           <button type="button" class="calendar-clear" id="cal-clear" data-it="Cancella" data-en="Clear">Cancella</button>
         </div>
@@ -286,7 +286,7 @@
         <input type="hidden" name="Data arrivo" id="cal-in-field">
         <input type="hidden" name="Data partenza" id="cal-out-field">
         <input type="hidden" name="Notti" id="cal-nights-field">
-        <input type="hidden" name="Totale (sconto 10%)" id="cal-total-field">
+        <input type="hidden" name="Totale soggiorno" id="cal-total-field">
       </div>
 
 <!-- "Prenota ora": il pulsante apre il calendario, sotto i loghi di Booking.com e Airbnb -->
@@ -409,11 +409,10 @@
 
     const fmt = d => d ? d.toLocaleDateString("it-IT") : "";
 
-    // TARIFFE: prezzi di Booking per periodo (colonne: Dal, Al, Camera 1, Camera 2).
-    // Il sito mostra il prezzo per notte già scontato del 10% e calcola il totale.
+    // TARIFFE: prezzi a notte per periodo (colonne: Dal, Al, Camera 1, Camera 2),
+    // presi dal Foglio Google delle tariffe. Il sito mostra il prezzo di ogni notte e calcola il totale.
     // Per usare un Foglio Google: File > Condividi > Pubblica sul web > CSV, e incollare qui il link.
     const TARIFFE_URL = "tariffe.csv";
-    const SCONTO = 0.10;
     let tariffe = [];
 
     const euro = n => n.toLocaleString("it-IT", { style: "currency", currency: "EUR", minimumFractionDigits: Number.isInteger(n) ? 0 : 2, maximumFractionDigits: 2 });
@@ -471,7 +470,7 @@
       return v === "Camera 1" || v === "Camera 2" ? [v] : ["Camera 1", "Camera 2"];
     };
 
-    // prezzo scontato di una notte per le camere scelte, null se manca nel listino
+    // prezzo di una notte per le camere scelte, null se manca nel listino
     function nightPrice(day) {
       const t = tariffe.find(t => day >= t.dal && day <= t.al);
       if (!t) return null;
@@ -480,7 +479,7 @@
         if (t[room] == null) return null;
         sum += t[room];
       }
-      return Math.round(sum * (1 - SCONTO) * 100) / 100;
+      return sum;
     }
 
     function stayTotal() {

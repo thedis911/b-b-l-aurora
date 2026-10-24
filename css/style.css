@@ -110,6 +110,14 @@ main p, main li, main span, main div
   max-width: 600px;    /* larghezza massima */
 }
 
+/* i testi di "Home" e "La nostra struttura" occupano tutta la larghezza della pagina */
+#home h1, #home p,
+#struttura h1, #struttura > p
+{
+  max-width: none;
+  margin-right: 20px;
+}
+
 footer 
 {
   text-align: center;
