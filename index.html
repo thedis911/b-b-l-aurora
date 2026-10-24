@@ -108,9 +108,6 @@
         <img src="immagini/struttura/veranda.webp" alt="Veranda" loading="lazy" width="600" height="400">
       </figure>
       <figure class="carousel-item">
-        <img src="immagini/struttura/veranda-soggiorno-2.webp" alt="Veranda e soggiorno" loading="lazy" width="600" height="400">
-      </figure>
-      <figure class="carousel-item">
         <img src="immagini/struttura/esterno.webp" alt="Esterno del B&B" loading="lazy" width="600" height="400">
       </figure>
       <figure class="carousel-item">
@@ -118,9 +115,6 @@
       </figure>
       <figure class="carousel-item">
         <img src="immagini/struttura/insegna.webp" alt="Insegna del B&B" loading="lazy" width="600" height="400">
-      </figure>
-      <figure class="carousel-item">
-        <img src="immagini/struttura/insegna-2.webp" alt="Insegna del B&B" loading="lazy" width="600" height="400">
       </figure>
       <figure class="carousel-item">
         <img src="immagini/struttura/colazione.webp" alt="Colazione" loading="lazy" width="600" height="400">
@@ -209,37 +203,8 @@
 
 </section>
 
-<!-- Sezione "prenotazioni" -->  
 
-  <section id="prenotazioni">
-    <h1 
-        data-it="Prenota Ora"
-        data-en="Book Now"
-    >Prenota Ora
-    </h1>
-    
-    <div class="booking-buttons">
-      <a href="https://www.booking.com/hotel/it/aurora-porto-torres.it.html"
-         class="booking-button"
-         target="_blank"
-         rel="noopener"
-      >
-        <span class="booking-logo" aria-hidden="true">B<span>.</span></span>
-        Booking.com
-      </a>
-
-      <a href="https://www.airbnb.ie/rooms/1434869856204546832"
-         class="booking-button"
-         target="_blank"
-         rel="noopener"
-      >
-        <i class="fab fa-airbnb" aria-hidden="true"></i>
-        Airbnb
-      </a>
-    </div>
-  </section>  
-
-<!-- Sezione "Contatti" -->   
+<!-- Sezione "Contatti" (con "Prenota ora" a destra) -->   
 
   <section id="contatti">
     <h1>
@@ -270,11 +235,80 @@
 <!-- Sezione "Contattaci" -->  
       
     </h1>
-    <form action="https://formspree.io/f/xpwrbavg" method="POST">
-      <input type="text" name="name" placeholder="Nome / Name" required>
-      <input type="email" name="email" placeholder="Email" required>
-      <textarea name="message" placeholder="Messaggio / Message" required></textarea>
-      <button type="submit" data-it="Invia" data-en="Send">Invia</button>
+    <form action="https://formspree.io/f/xpwrbavg" method="POST" class="contact-form">
+      <input type="hidden" name="_subject" value="Nuova richiesta dal sito B&B L'Aurora">
+
+      <div class="form-fields">
+        <input type="text" name="name" placeholder="Nome / Name" required>
+        <input type="email" name="email" placeholder="Email" required>
+        <textarea name="message" placeholder="Messaggio / Message" required></textarea>
+        <button type="submit" data-it="Invia" data-en="Send">Invia</button>
+      </div>
+
+<!-- Calendario: le date scelte arrivano nella mail insieme al messaggio -->
+
+      <div class="calendar" id="calendar" hidden>
+        <p class="calendar-hint"
+           data-it="Scegli la camera e le date del soggiorno"
+           data-en="Choose the room and your stay dates"
+        >Scegli la camera e le date del soggiorno</p>
+
+        <div class="room-choice">
+          <label><input type="radio" name="Camera" value="Camera 1" checked> <span data-it="Camera 1" data-en="Room 1">Camera 1</span></label>
+          <label><input type="radio" name="Camera" value="Camera 2"> <span data-it="Camera 2" data-en="Room 2">Camera 2</span></label>
+          <label><input type="radio" name="Camera" value="Entrambe le camere"> <span data-it="Entrambe" data-en="Both">Entrambe</span></label>
+        </div>
+
+        <div class="calendar-header">
+          <button type="button" class="calendar-nav" id="cal-prev" aria-label="Mese precedente">&#10094;</button>
+          <strong id="cal-title"></strong>
+          <button type="button" class="calendar-nav" id="cal-next" aria-label="Mese successivo">&#10095;</button>
+        </div>
+
+        <div class="calendar-grid" id="cal-grid"></div>
+
+        <div class="calendar-summary">
+          <span data-it="Arrivo:" data-en="Check-in:">Arrivo:</span> <strong id="cal-in">-</strong>
+          &nbsp;
+          <span data-it="Partenza:" data-en="Check-out:">Partenza:</span> <strong id="cal-out">-</strong>
+          <button type="button" class="calendar-clear" id="cal-clear" data-it="Cancella" data-en="Clear">Cancella</button>
+        </div>
+
+        <input type="hidden" name="Data arrivo" id="cal-in-field">
+        <input type="hidden" name="Data partenza" id="cal-out-field">
+        <input type="hidden" name="Notti" id="cal-nights-field">
+      </div>
+
+<!-- "Prenota ora": il pulsante apre il calendario, sotto i loghi di Booking.com e Airbnb -->
+
+      <div class="booking-panel" id="prenotazioni">
+        <button type="button" class="booking-toggle" id="booking-toggle"
+                aria-controls="calendar" aria-expanded="false"
+                data-it="Prenota ora" data-en="Book now"
+        >Prenota ora</button>
+
+        <div class="booking-buttons">
+          <a href="https://www.booking.com/hotel/it/aurora-porto-torres.it.html"
+             class="booking-button"
+             target="_blank"
+             rel="noopener"
+             aria-label="Prenota su Booking.com"
+             title="Booking.com"
+          >
+            <span class="booking-logo" aria-hidden="true">B<span>.</span></span>
+          </a>
+    
+          <a href="https://www.airbnb.ie/rooms/1434869856204546832"
+             class="booking-button"
+             target="_blank"
+             rel="noopener"
+             aria-label="Prenota su Airbnb"
+             title="Airbnb"
+          >
+            <i class="fab fa-airbnb" aria-hidden="true"></i>
+          </a>
+        </div>
+      </div>
     </form>
   </section>
 
@@ -308,6 +342,8 @@
   };
 
   function setLanguage(lang) {
+    document.documentElement.lang = lang;
+    if (window.renderCalendar) renderCalendar();
     document.querySelectorAll("[data-i18n]").forEach(el => {
       const key = el.getAttribute("data-i18n");
       el.textContent = translations[lang][key];
@@ -346,6 +382,115 @@
       carousel.classList.toggle("paused", !wasFocused);
     });
   });
+</script>
+
+<!-- CALENDARIO DATE SOGGIORNO -->
+
+<script>
+  (() => {
+    const grid = document.getElementById("cal-grid");
+    const title = document.getElementById("cal-title");
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    let month = new Date(today.getFullYear(), today.getMonth(), 1); // mese mostrato
+    let checkIn = null;
+    let checkOut = null;
+
+    const fmt = d => d ? d.toLocaleDateString("it-IT") : "";
+
+    function update() {
+      document.getElementById("cal-in").textContent = fmt(checkIn) || "-";
+      document.getElementById("cal-out").textContent = fmt(checkOut) || "-";
+      // campi nascosti inviati con il modulo: finiscono nel testo della mail
+      document.getElementById("cal-in-field").value = fmt(checkIn);
+      document.getElementById("cal-out-field").value = fmt(checkOut);
+      document.getElementById("cal-nights-field").value =
+        checkIn && checkOut ? Math.round((checkOut - checkIn) / 86400000) : "";
+      renderCalendar();
+    }
+
+    // primo clic = arrivo, secondo clic = partenza
+    function pick(day) {
+      if (!checkIn || checkOut || day <= checkIn) {
+        checkIn = day;
+        checkOut = null;
+      } else {
+        checkOut = day;
+      }
+      update();
+    }
+
+    window.renderCalendar = () => {
+      const lang = document.documentElement.lang === "en" ? "en-GB" : "it-IT";
+      const t = month.toLocaleDateString(lang, { month: "long", year: "numeric" });
+      title.textContent = t.charAt(0).toUpperCase() + t.slice(1);
+      grid.innerHTML = "";
+
+      // intestazione giorni della settimana, da lunedì
+      for (let i = 0; i < 7; i++) {
+        const d = new Date(2024, 0, 1 + i); // 1 gennaio 2024 era lunedì
+        const el = document.createElement("span");
+        el.className = "calendar-weekday";
+        el.textContent = d.toLocaleDateString(lang, { weekday: "short" }).slice(0, 2);
+        grid.appendChild(el);
+      }
+
+      const offset = (month.getDay() + 6) % 7; // celle vuote prima del giorno 1
+      for (let i = 0; i < offset; i++) grid.appendChild(document.createElement("span"));
+
+      const days = new Date(month.getFullYear(), month.getMonth() + 1, 0).getDate();
+      for (let n = 1; n <= days; n++) {
+        const day = new Date(month.getFullYear(), month.getMonth(), n);
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "calendar-day";
+        btn.textContent = n;
+        btn.disabled = day < today;
+        if (+day === +checkIn || +day === +checkOut) btn.classList.add("selected");
+        if (checkIn && checkOut && day > checkIn && day < checkOut) btn.classList.add("in-range");
+        btn.addEventListener("click", () => pick(day));
+        grid.appendChild(btn);
+      }
+
+      // non si torna ai mesi passati
+      document.getElementById("cal-prev").disabled =
+        month.getFullYear() === today.getFullYear() && month.getMonth() === today.getMonth();
+    };
+
+    document.getElementById("cal-prev").addEventListener("click", () => {
+      month = new Date(month.getFullYear(), month.getMonth() - 1, 1);
+      renderCalendar();
+    });
+
+    document.getElementById("cal-next").addEventListener("click", () => {
+      month = new Date(month.getFullYear(), month.getMonth() + 1, 1);
+      renderCalendar();
+    });
+
+    // "Prenota ora" mostra/nasconde calendario e scelta camera.
+    // Da chiuso i suoi campi sono disattivati, così non finiscono nella mail.
+    const calendar = document.getElementById("calendar");
+    const toggle = document.getElementById("booking-toggle");
+    const setOpen = open => {
+      calendar.hidden = !open;
+      toggle.setAttribute("aria-expanded", open);
+      toggle.classList.toggle("open", open);
+      calendar.querySelectorAll("input").forEach(input => input.disabled = !open);
+    };
+    toggle.addEventListener("click", () => {
+      setOpen(calendar.hidden);
+      if (!calendar.hidden) calendar.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    });
+    setOpen(false);
+
+    document.getElementById("cal-clear").addEventListener("click", () => {
+      checkIn = checkOut = null;
+      update();
+    });
+
+    update();
+  })();
 </script>
 
 <!-- MENU MOBILE -->
