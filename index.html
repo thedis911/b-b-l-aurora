@@ -39,8 +39,6 @@
     <li>|</li>
     <li><a href="#struttura" data-i18n="structure">La nostra struttura</a></li>
     <li>|</li>
-    <li><a href="#servizi" data-i18n="services">Servizi</a></li>
-    <li>|</li>   
     <li><a href="#mappa" data-i18n="location">Nelle vicinanze</a></li>
     <li>|</li>
     <li><a href="#prenotazioni" data-i18n="booking">Prenotazioni</a></li>
@@ -124,27 +122,6 @@
       <figure class="carousel-item">
         <img src="immagini/struttura/insegna-2.webp" alt="Insegna del B&B" loading="lazy" width="600" height="400">
       </figure>
-    </div>
-  </div>
-
-  </section>
-   
-<!-- Sezione "servizi" -->
-  <section id="servizi">
-  <h1 
-      data-it="Servizi" 
-      data-en="Services"
-  >Servizi
-  </h1>  
-    
-    <p 
-       data-it="Ecco un elenco dei nostri servizi"
-       data-en="Here's what we offer!"
-    >Ecco un elenco dei nostri servizi
-    </p>
-  
-<div class="carousel" aria-label="Foto dei servizi">
-    <div class="carousel-track">
       <figure class="carousel-item">
         <img src="immagini/struttura/colazione.webp" alt="Colazione" loading="lazy" width="600" height="400">
       </figure>
@@ -161,7 +138,7 @@
   </div>
 
   </section>
-
+   
 <!-- Sezione "Nelle vicinanze" -->  
 
   <section id="mappa">
@@ -241,15 +218,25 @@
     >Prenota Ora
     </h1>
     
-    <p class="booking-links">
-      <a href="https://www.airbnb.it/rooms/1434869856204546832?check_in=2025-09-10&check_out=2025-09-11&search_mode=regular_search&category_tag=Tag%3A8678&photo_id=2274399012&source_impression_id=p3_1756140832_P3tdHj5cjqg8iC4V&previous_page_section_name=1000&federated_search_id=4be3c95a-652f-41cb-adef-0c2fe748707e" target="_blank">Camera Matrimoniale</a> | 
-      <a href="https://www.airbnb.it/rooms/1476174235066476972?check_in=2025-09-10&check_out=2025-09-11&search_mode=regular_search&category_tag=Tag%3A8678&photo_id=2274525611&source_impression_id=p3_1756140833_P30YND2rUNF29umX&previous_page_section_name=1000&federated_search_id=4be3c95a-652f-41cb-adef-0c2fe748707e" target="_blank">Camera Doppia</a>
+    <div class="booking-buttons">
+      <a href="https://www.booking.com/hotel/it/aurora-porto-torres.it.html"
+         class="booking-button"
+         target="_blank"
+         rel="noopener"
+      >
+        <span class="booking-logo" aria-hidden="true">B<span>.</span></span>
+        Booking.com
+      </a>
 
-    <!--  
-      <a href="https://booking.com" target="_blank">Booking.com </a>
-     -->  commentato in attesa di avere anche Booking
-      
-    </p>
+      <a href="https://www.airbnb.ie/rooms/1434869856204546832"
+         class="booking-button"
+         target="_blank"
+         rel="noopener"
+      >
+        <i class="fab fa-airbnb" aria-hidden="true"></i>
+        Airbnb
+      </a>
+    </div>
   </section>  
 
 <!-- Sezione "Contatti" -->   
@@ -283,28 +270,6 @@
 <!-- Sezione "Contattaci" -->  
       
     </h1>
-<!-- Pulsanti prenotazione Booking.com e Airbnb -->
-
-    <div class="booking-buttons">
-      <a href="https://www.booking.com/hotel/it/aurora-porto-torres.it.html"
-         class="booking-button"
-         target="_blank"
-         rel="noopener"
-      >
-        <span class="booking-logo" aria-hidden="true">B<span>.</span></span>
-        Booking.com
-      </a>
-
-      <a href="https://www.airbnb.ie/rooms/1434869856204546832"
-         class="booking-button"
-         target="_blank"
-         rel="noopener"
-      >
-        <i class="fab fa-airbnb" aria-hidden="true"></i>
-        Airbnb
-      </a>
-    </div>
-
     <form action="https://formspree.io/f/xpwrbavg" method="POST">
       <input type="text" name="name" placeholder="Nome / Name" required>
       <input type="email" name="email" placeholder="Email" required>
@@ -328,7 +293,6 @@
     it: {
       home: "Home",
       structure: "La nostra struttura",
-      services: "Servizi",
       location: "Nelle vicinanze",
       booking: "Prenotazioni",      
       contact: "Contatti"
@@ -337,7 +301,6 @@
     {
       home: "Home",
       structure: "Our Structure",
-      services: "Services",
       location: "Nearby",
       booking: "Bookings",      
       contact: "Contact"
@@ -370,8 +333,8 @@
       track.appendChild(clone);
     });
 
-    // circa 4 secondi per ogni foto
-    track.style.animationDuration = `${items.length * 4}s`;
+    // circa 8 secondi per ogni foto
+    track.style.animationDuration = `${items.length * 8}s`;
 
     // su mobile non c'è il passaggio del mouse: il tocco ferma/riavvia
     track.addEventListener("click", e => {
