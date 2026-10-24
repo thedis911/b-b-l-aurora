@@ -277,12 +277,16 @@
           <span data-it="Arrivo:" data-en="Check-in:">Arrivo:</span> <strong id="cal-in">-</strong>
           &nbsp;
           <span data-it="Partenza:" data-en="Check-out:">Partenza:</span> <strong id="cal-out">-</strong>
+          <br>
+          <span data-it="Totale (sconto 10% rispetto a Booking):" data-en="Total (10% off Booking price):">Totale (sconto 10% rispetto a Booking):</span>
+          <strong id="cal-total">-</strong>
           <button type="button" class="calendar-clear" id="cal-clear" data-it="Cancella" data-en="Clear">Cancella</button>
         </div>
 
         <input type="hidden" name="Data arrivo" id="cal-in-field">
         <input type="hidden" name="Data partenza" id="cal-out-field">
         <input type="hidden" name="Notti" id="cal-nights-field">
+        <input type="hidden" name="Totale (sconto 10%)" id="cal-total-field">
       </div>
 
 <!-- "Prenota ora": il pulsante apre il calendario, sotto i loghi di Booking.com e Airbnb -->
@@ -405,6 +409,91 @@
 
     const fmt = d => d ? d.toLocaleDateString("it-IT") : "";
 
+    // TARIFFE: prezzi di Booking per periodo (colonne: Dal, Al, Camera 1, Camera 2).
+    // Il sito mostra il prezzo per notte già scontato del 10% e calcola il totale.
+    // Per usare un Foglio Google: File > Condividi > Pubblica sul web > CSV, e incollare qui il link.
+    const TARIFFE_URL = "tariffe.csv";
+    const SCONTO = 0.10;
+    let tariffe = [];
+
+    const euro = n => n.toLocaleString("it-IT", { style: "currency", currency: "EUR", minimumFractionDigits: Number.isInteger(n) ? 0 : 2, maximumFractionDigits: 2 });
+
+    // accetta 31/12/2026 oppure 2026-12-31
+    function parseDate(s) {
+      let m = s.match(/^(\d{1,2})[\/.-](\d{1,2})[\/.-](\d{4})$/);
+      if (m) return new Date(+m[3], m[2] - 1, +m[1]);
+      m = s.match(/^(\d{4})-(\d{1,2})-(\d{1,2})$/);
+      if (m) return new Date(+m[1], m[2] - 1, +m[3]);
+      return null;
+    }
+
+    // accetta 80 / 80,50 / 1.200,00 / € 80
+    function parsePrice(s) {
+      s = s.replace(/[€\s]/g, "");
+      if (s.includes(",")) s = s.replace(/\./g, "").replace(",", ".");
+      const n = parseFloat(s);
+      return isNaN(n) ? null : n;
+    }
+
+    // CSV con virgola (Google) o punto e virgola (Excel italiano)
+    function parseCsv(text) {
+      const sep = text.split("\n")[0].includes(";") ? ";" : ",";
+      return text.trim().split(/\r?\n/).map(line => {
+        const cells = [];
+        let cell = "", quoted = false;
+        for (const ch of line) {
+          if (ch === '"') quoted = !quoted;
+          else if (ch === sep && !quoted) { cells.push(cell.trim()); cell = ""; }
+          else cell += ch;
+        }
+        cells.push(cell.trim());
+        return cells;
+      });
+    }
+
+    fetch(TARIFFE_URL, { cache: "no-store" })
+      .then(r => r.ok ? r.text() : "")
+      .then(text => {
+        tariffe = parseCsv(text)
+          .map(([dal, al, c1, c2]) => ({
+            dal: parseDate(dal || ""),
+            al: parseDate(al || ""),
+            "Camera 1": parsePrice(c1 || ""),
+            "Camera 2": parsePrice(c2 || "")
+          }))
+          .filter(t => t.dal && t.al); // salta intestazione e righe vuote
+        update();
+      })
+      .catch(() => {});
+
+    const selectedRooms = () => {
+      const v = document.querySelector('input[name="Camera"]:checked').value;
+      return v === "Camera 1" || v === "Camera 2" ? [v] : ["Camera 1", "Camera 2"];
+    };
+
+    // prezzo scontato di una notte per le camere scelte, null se manca nel listino
+    function nightPrice(day) {
+      const t = tariffe.find(t => day >= t.dal && day <= t.al);
+      if (!t) return null;
+      let sum = 0;
+      for (const room of selectedRooms()) {
+        if (t[room] == null) return null;
+        sum += t[room];
+      }
+      return Math.round(sum * (1 - SCONTO) * 100) / 100;
+    }
+
+    function stayTotal() {
+      if (!checkIn || !checkOut) return null;
+      let total = 0;
+      for (let d = new Date(checkIn); d < checkOut; d.setDate(d.getDate() + 1)) {
+        const p = nightPrice(d);
+        if (p == null) return null;
+        total += p;
+      }
+      return total;
+    }
+
     function update() {
       document.getElementById("cal-in").textContent = fmt(checkIn) || "-";
       document.getElementById("cal-out").textContent = fmt(checkOut) || "-";
@@ -413,6 +502,11 @@
       document.getElementById("cal-out-field").value = fmt(checkOut);
       document.getElementById("cal-nights-field").value =
         checkIn && checkOut ? Math.round((checkOut - checkIn) / 86400000) : "";
+
+      const total = stayTotal();
+      const totalText = !checkOut ? "-" : total != null ? euro(total) : "su richiesta / on request";
+      document.getElementById("cal-total").textContent = totalText;
+      document.getElementById("cal-total-field").value = checkOut ? totalText : "";
       renderCalendar();
     }
 
@@ -453,6 +547,14 @@
         btn.className = "calendar-day";
         btn.textContent = n;
         btn.disabled = day < today;
+
+        // prezzo della notte sotto il numero del giorno
+        const price = day >= today ? nightPrice(day) : null;
+        if (price != null) {
+          const small = document.createElement("small");
+          small.textContent = euro(price);
+          btn.appendChild(small);
+        }
         if (+day === +checkIn || +day === +checkOut) btn.classList.add("selected");
         if (checkIn && checkOut && day > checkIn && day < checkOut) btn.classList.add("in-range");
         btn.addEventListener("click", () => pick(day));
@@ -489,6 +591,9 @@
       if (!calendar.hidden) calendar.scrollIntoView({ behavior: "smooth", block: "nearest" });
     });
     setOpen(false);
+
+    // cambiando camera cambiano prezzi e totale
+    document.querySelectorAll('input[name="Camera"]').forEach(r => r.addEventListener("change", update));
 
     document.getElementById("cal-clear").addEventListener("click", () => {
       checkIn = checkOut = null;
