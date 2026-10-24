@@ -142,57 +142,95 @@ form input, form textarea, form button
   padding: 10px; /*  aggiunge 10 pixel di spazio interno su tutti i lati del form  */
   font-size: 1rem; 
 }
-.slideshow-container 
+/* Caroselli foto: scorrono in orizzontale, due foto affiancate */
+
+main div.carousel
 {
-  position: relative;  
-  max-width: 600px; /* limita la larghezza del box che contiene le foto massima a 600 pixel.  */
-  margin: 16px 0 0 20px auto;   /* Margine: top 16px, right 0px, bottom 0px, left 20px */
-  text-align: center; /* allinea il testo contenuto al centro */
-}
-.slideshow-images img 
-{
-  display: none;
-  width: 100%; /* ogni immagine occupa il 100% della larghezza del contenitore */
-  height: 400px; /* altezza fissa di 400 pixel. */
-  object-fit: cover; /* l’immagine viene ridimensionata per coprire tutta l’area senza deformarsi, ritagliando se necessario. */
-  border-radius: 10px;
-  object-position: center;
-  margin: 0 auto; /* Aggiungi il margine automatico per centrarle */
+  position: relative;
+  max-width: 900px;
+  margin: 16px 20px 0 20px;
+  padding: 20px 0; /* spazio per lo zoom senza tagliare le foto */
+  overflow: hidden;
 }
 
-.slideshow-images img.active 
+main div.carousel-track
+{
+  display: flex;
+  gap: 16px;
+  width: max-content;
+  max-width: none;
+  margin: 0;
+  animation: scorri 60s linear infinite; /* la durata viene calcolata dal JS */
+}
+
+/* mouse sopra il carosello (o tocco su mobile): lo scorrimento si ferma */
+.carousel:hover .carousel-track,
+.carousel.paused .carousel-track
+{
+  animation-play-state: paused;
+}
+
+@keyframes scorri
+{
+  from { transform: translateX(0); }
+  to   { transform: translateX(calc(-50% - 8px)); } /* metà traccia + metà gap */
+}
+
+.carousel-item
+{
+  position: relative;
+  flex: 0 0 auto;
+  width: 440px; /* due foto affiancate nel riquadro da 900px */
+  margin: 0;
+  transition: transform 0.4s ease, opacity 0.4s ease;
+  cursor: pointer;
+}
+
+.carousel-item img
 {
   display: block;
+  width: 100%;
+  height: 300px;
+  object-fit: cover; /* l'immagine copre l'area senza deformarsi */
+  border-radius: 10px;
 }
 
-/* frecce di navigazione delle foto nel contenitore. */
-
-.slideshow-container .prev,
-.slideshow-container .next 
+/* la foto sotto il puntatore si ingrandisce, le altre si attenuano */
+.carousel:hover .carousel-item,
+.carousel.paused .carousel-item
 {
-  cursor: pointer;
-  position: absolute;
-  top: 45%;
-  padding: 8px 12px;
-  color: white;
-  font-weight: bold;
-  font-size: 18px;
-  background-color: rgba(0,0,0,0.5);
-  border: none;
-  border-radius: 5px;
+  opacity: 0.7;
+}
+
+.carousel .carousel-item:hover,
+.carousel .carousel-item.focused
+{
+  transform: scale(1.08);
+  opacity: 1;
   z-index: 1;
 }
 
-.slideshow-container .prev { left: 10px; }
-.slideshow-container .next { right: 10px; }
-
-.slideshow-title 
+/* didascalia sopra la foto (sezione "Nelle vicinanze") */
+.carousel-item figcaption
 {
-  text-align: center;
-  font-weight: normal;
-  font-size: 1.2rem;
-  margin-bottom: 10px;
-}  
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 24px 12px 10px;
+  border-radius: 0 0 10px 10px;
+  background: linear-gradient(transparent, rgba(0,0,0,0.65));
+  color: white;
+  font-size: 1rem;
+  text-align: left;
+}
+
+/* chi preferisce meno animazioni scorre le foto a mano */
+@media (prefers-reduced-motion: reduce)
+{
+  main div.carousel { overflow-x: auto; }
+  main div.carousel-track { animation: none; }
+}
 
 /* icone social */
 
@@ -261,6 +299,62 @@ form input, form textarea, form button
 }
 .booking-links a:hover {
   text-decoration: underline;  /* effetto al passaggio del mouse */
+}
+
+/* pulsanti Booking.com e Airbnb nei contatti */
+
+main div.booking-buttons
+{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 10px 0 16px 0;
+}
+
+.booking-button
+{
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  background-color: white;
+  color: #004080;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 8px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.15);
+  transition: transform 0.2s ease;
+}
+
+.booking-button:hover
+{
+  transform: translateY(-2px);
+}
+
+.booking-button .fa-airbnb
+{
+  color: #ff5a5f; /* rosso Airbnb */
+  font-size: 1.4em;
+}
+
+main span.booking-logo
+{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  margin: 0;
+  background-color: #003580; /* blu Booking.com */
+  color: white;
+  font-weight: 700;
+  border-radius: 4px;
+}
+
+main span.booking-logo span
+{
+  margin: 0;
+  color: #009fe3; /* puntino azzurro Booking.com */
 }
 
 /* Logo B&B */
@@ -334,4 +428,15 @@ form input, form textarea, form button
   {
     height: 40px;
   }  
+
+  /* su mobile una foto e mezza alla volta */
+  .carousel-item
+  {
+    width: 75vw;
+  }
+
+  .carousel-item img
+  {
+    height: 220px;
+  }
 }
