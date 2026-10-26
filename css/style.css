@@ -654,7 +654,7 @@ main span.booking-logo span
 
   .nav-logo img 
   {
-    height: 40px;
+    height: 56px;
   }  
 
   /* su mobile prima il calendario, poi "Prenota ora" */
@@ -685,4 +685,50 @@ footer p.footer-legal
   margin-top: 6px;
   font-size: 0.85em;
   opacity: 0.85;
+}
+
+/* Le camere (sezione "La nostra struttura") */
+#struttura h2.rooms-title
+{
+  color: white;
+  margin: 28px 20px 0 20px;
+}
+
+#struttura ul.rooms-list
+{
+  margin: 8px 20px 0 20px;
+  padding-left: 20px;
+}
+
+#struttura ul.rooms-list li
+{
+  max-width: none;
+  margin: 10px 0 0 0;
+}
+
+#struttura ul.rooms-list li strong
+{
+  color: #ffd700;
+  margin-right: 6px;
+}
+
+#struttura ul.rooms-list li span
+{
+  margin: 0;
+  max-width: none;
+}
+
+/* su desktop logo e menù stanno vicini, al centro */
+@media (min-width: 769px)
+{
+  .nav-top
+  {
+    justify-content: center;
+    gap: 40px;
+  }
+
+  .nav-logo
+  {
+    margin-right: 0;
+  }
 }
