@@ -732,3 +732,63 @@ footer p.footer-legal
     margin-right: 0;
   }
 }
+
+/* Sezione "Dove siamo" */
+#dove-siamo div.where-info
+{
+  max-width: none;
+  margin: 16px 20px 0 20px;
+}
+
+#dove-siamo div.where-info p
+{
+  margin: 0 0 10px 0;
+  max-width: none;
+}
+
+#dove-siamo p.where-address
+{
+  font-size: 1.15rem;
+}
+
+#dove-siamo a.where-link
+{
+  display: inline-block;
+  background: #ffd700;
+  color: #004080;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+}
+
+#dove-siamo a.where-link:hover
+{
+  background: #ffe55c;
+}
+
+#dove-siamo div.where-map
+{
+  max-width: none;
+  margin: 20px 20px 0 20px;
+  border-radius: 12px;
+  overflow: hidden;
+  height: 400px;
+  background: #e8eef5; /* colore di attesa mentre la mappa si carica */
+}
+
+#dove-siamo div.where-map iframe
+{
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+@media (max-width: 768px)
+{
+  #dove-siamo div.where-map
+  {
+    height: 300px;
+  }
+}
