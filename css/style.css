@@ -792,3 +792,29 @@ footer p.footer-legal
     height: 300px;
   }
 }
+
+/* loghi Booking.com e Airbnb: solo immagini, senza collegamento */
+#contatti span.booking-button
+{
+  margin: 0;
+  cursor: default;
+}
+
+#contatti span.booking-button:hover
+{
+  transform: none;
+}
+
+/* icone Facebook e WhatsApp non più alte della scritta "Contattaci" */
+#contatti h1 .social-icon
+{
+  font-size: 0.55em;
+  padding: 4px 6px;
+  margin-left: 4px;
+  line-height: 1;
+}
+
+#contatti h1 .social-icon i.fa-facebook
+{
+  font-size: 1em;
+}
